@@ -21,6 +21,12 @@
 
 <?PHP
 
+data.forEach(el => {
+
+    $current = el.dt_txt.split(" ");
+    $wind = dateNTime[0].split("-");
+    $conditions = dateNTime[1].split(":");
+
 $current = "1°C";
 $wind = "2°C";
 $conditions = "-2°C";
@@ -41,9 +47,9 @@ if( $_POST["name"]) {
     
     $response = file_get_contents($url);
     $decodedResponse = json_decode($response, true);
-    $test = $decodedResponse['list'][0];
+    $data = $decodedResponse['list'][0];
 
-    var_dump($test);
+    var_dump($data);
     exit();
  }
 
