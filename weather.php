@@ -11,49 +11,49 @@
 
 <h1> Weather</h1>
 
-<form action = "<?php $_PHP_SELF ?>" method = "POST">
-         City name: <input type = "text" name = "name" />
-         
-         <input type = "submit" />
-      </form>
-
-<!-- ************ PHP BELOW *************** --> 
+<form action="<?php $_PHP_SELF ?>" method = "POST">
+   City name: <input type = "text" name = "location" />
+   
+   <input type = "submit" />
+</form>
 
 <?PHP
 
-data.forEach(el => {
+if(count($_POST) > 0) {
 
-    $current = el.dt_txt.split(" ");
-    $wind = dateNTime[0].split("-");
-    $conditions = dateNTime[1].split(":");
+   $url = "http://api.openweathermap.org/data/2.5/forecast?q=" . $_POST['location'] . "&units=metric&APPID=a3617c67d743baa84193327c9587297b";
 
-$current = "1°C";
-$wind = "2°C";
-$conditions = "-2°C";
-
-$url = "http://api.openweathermap.org/data/2.5/forecast?q=" . $_POST['name'] . "&units=metric&APPID=a3617c67d743baa84193327c9587297b";
-
-if( $_POST["name"]) {
-    if (preg_match("/[^A-Za-z'-]/",$_POST['name'] )) {
+    if (preg_match("/[^A-Za-z'-]/",$_POST['location'] )) {
        die ("invalid name, please only use alpha characters");
     }
-    echo "Weather for ". $_POST['name']. "<br />" . "<br />";
-
-    echo "Current temperature is: " . $current . "<br />";
-
-    echo "Current wind speed is: " . $wind . "<br />";
-
-    echo "Current conditions: " . $conditions . "<br />";
     
     $response = file_get_contents($url);
     $decodedResponse = json_decode($response, true);
-    $data = $decodedResponse['list'][0];
+    $data = $decodedResponse['list'][0];   
 
-    var_dump($data);
-    exit();
- }
+    $current = $data["main"]["temp"];
+    $wind = $data["wind"]["speed"];
+    $conditions = $data["weather"][0]["description"];
+    
+    echo "Weather for ". $_POST['location'];
+    
+    ?>
 
-?>
+    <br /><br />
+
+    <?php echo "Current temperature is: " . $current . "°C"; ?>
+    
+    <br />
+
+    <?php echo "Current wind speed is: " . $wind . "kph"; ?> 
+    
+    <br />
+
+    <?php echo "Current conditions: " . $conditions . "."; ?> 
+
+    <br />
+
+ <?php } ?>
 
 </body>
 
