@@ -22,8 +22,8 @@
 <?PHP
 
 $current = "1°C";
-$high = "2°C";
-$low = "-2°C";
+$wind = "2°C";
+$conditions = "-2°C";
 
 $url = "http://api.openweathermap.org/data/2.5/forecast?q=" . $_POST['name'] . "&units=metric&APPID=a3617c67d743baa84193327c9587297b";
 
@@ -35,14 +35,15 @@ if( $_POST["name"]) {
 
     echo "Current temperature is: " . $current . "<br />";
 
-    echo "High today: " . $high . "<br />";
+    echo "Current wind speed is: " . $wind . "<br />";
 
-    echo "Low today: " . $low . "<br />";
+    echo "Current conditions: " . $conditions . "<br />";
     
     $response = file_get_contents($url);
-    $response = json_decode($response);
-    
-    var_dump($response);
+    $decodedResponse = json_decode($response, true);
+    $test = $decodedResponse['list'][0];
+
+    var_dump($test);
     exit();
  }
 
