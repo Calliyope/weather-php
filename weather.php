@@ -72,7 +72,7 @@
             $bgCurrent = $bgScatteredClouds;
       }
       ?>
-         <div id="bodyDiv" style="background-image:url(<?php echo $bgCurrent ?>) no-repeat center center fixed">
+         <div id="bodyDiv" style="background:url(<?php echo $bgCurrent ?>) no-repeat fixed center/cover">
             <h1 id="title"> How's the Weather?</h1>
 
             <form id="form" action="<?php $_PHP_SELF ?>" method="POST">
