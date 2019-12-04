@@ -14,7 +14,7 @@ background-color: #E4F2EE;
 color: #333C4B;
 font-family: <?= $font_family ?>;
 background-size: cover;
-background-image: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%,rgba(255,255,255,0.4) 100%), url(/weatherstyles/weather.jpg);
+background-image: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.4) 100%), url(/weatherstyles/melbourne.jpg);
 }
 
 #title {
@@ -35,18 +35,28 @@ border-radius: 8px;
 padding: 25px;
 margin-top: 30px;
 text-align: center;
-background-color: #fffcf4;
+background-color: #fffff9;
 margin-left: 22%;
 margin-right: 22%;
-box-shadow: grey 2px 2px 10px;
+box-shadow: grey 3px 3px 10px;
 }
 
 #bodyDiv {
 margin-left: 25%;
 margin-right: 25%;
-padding: 40px;
+padding: 35px;
 border-radius: 8px;
-margin-top: 10%;
-background-color: #e8f6f7;
-box-shadow: grey 2px 2px 10px;
+margin-top: 8%;
+background-color: #DDEBF0;
+box-shadow: grey 3px 3px 10px;
+background-image: url(/weatherstyles/clouds.jpg);
+background-size: cover;
+}
+
+#resultsTitle {
+font-size: 2em;
+}
+
+#icon {
+text-align: center;
 }
